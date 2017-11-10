@@ -25,3 +25,39 @@
 .axis text {
     text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
 }
+
+path {
+    fill: #ccc;
+    stroke-width: 1px;
+    stroke: #fff;
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 60px;
+    height: 28px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.feature {
+    fill: #ccc;
+}
+
+.mesh {
+    fill: none;
+    stroke: #fff;
+    stroke-width: .5px;
+    stroke-linejoin: round;
+}
+
+.outline {
+    fill: #ddd;
+    stroke: #000;
+    stroke-width: 1.5px;
+}
