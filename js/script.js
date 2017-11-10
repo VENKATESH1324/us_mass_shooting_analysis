@@ -23,6 +23,7 @@ d3.csv("data/shooting_data.csv", (error, data) => {
 				}
 			})
 		});
+		console.log(segregatedData)
 		let parallelChart = new ParallelChart;
 		parallelChart.drawChart(segregatedData);
 	})	

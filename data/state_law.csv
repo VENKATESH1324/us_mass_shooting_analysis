@@ -1,101 +1,51 @@
-state,lawtotal
-Alabama,10
-Alaska,4
-Arizona,11
-Arkansas,11
-California,104
-Colorado,30
-Connecticut,89
-Delaware,39
-Florida,21
-Georgia,6
-Hawaii,78
-Idaho,4
-Illinois,64
-Indiana,12
-Iowa,25
-Kansas,7
-Kentucky,7
-Louisiana,12
-Maine,12
-Maryland,64
-Massachusetts,100
-Michigan,21
-Minnesota,41
-Mississippi,5
-Missouri,7
-Montana,4
-Nebraska,22
-Nevada,15
-New Hampshire,10
-New Jersey,67
-New Mexico,10
-New York,75
-North Carolina,30
-North Dakota,14
-Ohio,16
-Oklahoma,9
-Oregon,35
-Pennsylvania,36
-Rhode Island,43
-South Carolina,12
-South Dakota,5
-Tennessee,22
-Texas,18
-Utah,11
-Vermont,6
-Virginia,13
-Washington,43
-West Virginia,21
-Wisconsin,23
-Wyoming,9
-Alabama,10
-Alaska,4
-Arizona,11
-Arkansas,11
-California,106
-Colorado,30
-Connecticut,89
-Delaware,40
-Florida,21
-Georgia,6
-Hawaii,78
-Idaho,4
-Illinois,64
-Indiana,12
-Iowa,24
-Kansas,7
-Kentucky,7
-Louisiana,12
-Maine,12
-Maryland,64
-Massachusetts,100
-Michigan,21
-Minnesota,41
-Mississippi,5
-Missouri,6
-Montana,4
-Nebraska,22
-Nevada,21
-New Hampshire,9
-New Jersey,75
-New Mexico,10
-New York,75
-North Carolina,30
-North Dakota,13
-Ohio,16
-Oklahoma,9
-Oregon,35
-Pennsylvania,36
-Rhode Island,43
-South Carolina,12
-South Dakota,5
-Tennessee,22
-Texas,18
-Utah,13
-Vermont,6
-Virginia,13
-Washington,43
-West Virginia,21
-Wisconsin,23
-Wyoming,9
+state,lawtotal,shootings,deaths
+Alabama,10,11,32
+Alaska,4,1,2
+Arizona,11,13,52
+Arkansas,11,2,5
+California,104,34,164
+Colorado,30,6,43
+Connecticut,89,3,42
+Delaware,39,1,13
+Florida,21,23,31
+Georgia,6,16,4
+Hawaii,78,1,7
+Idaho,4,1,3
+Illinois,64,11,38
+Indiana,12,1,0
+Iowa,25,1,6
+Kansas,7,5,14
+Kentucky,7,6,31
+Louisiana,12,6,14
+Maine,12,1,4
+Maryland,64,2,1
+Massachusetts,100,5,13
+Michigan,21,10,30
+Minnesota,41,4,22
+Mississippi,5,4,13
+Missouri,7,4,15
+Montana,4,2,6
+Nebraska,22,3,14
+Nevada,15,5,13
+New Hampshire,10,,
+New Jersey,67,4,8
+New Mexico,10,5,12
+New York,75,11,43
+North Carolina,30,10,32
+North Dakota,14,,
+Ohio,16,9,21
+Oklahoma,9,5,26
+Oregon,35,4,17
+Pennsylvania,36,8,28
+Rhode Island,43,,
+South Carolina,12,5,18
+South Dakota,5,1,6
+Tennessee,22,7,13
+Texas,18,19,121
+Utah,11,2,7
+Vermont,6,1,2
+Virginia,13,10,58
+Washington,43,13,68
+West Virginia,21,1,5
+Wisconsin,23,8,40
+Wyoming,9,1,1
