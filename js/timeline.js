@@ -82,8 +82,8 @@ class TimeLine {
 
         });
 
-        var brush = d3.svg.brush().x(x).extent([[10, 475], [width, 495]]).on("brush", brushed);
-        d3.select("#timeline").append("g").attr("class", "brush").call(brush);
+        //var brush = d3.svg.brush().x(x).extent([[10, 475], [width, 495]]).on("brush", brushed);
+        //d3.select("#timeline").append("g").attr("class", "brush").call(brush);
 
 
         function brushed() {
@@ -107,6 +107,8 @@ class TimeLine {
             //self.shiftChart.update(selectedStates);
 
         }
+        let map = new Map();
+        map.drawChart();
 
     }
 }
