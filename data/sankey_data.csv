@@ -1,0 +1,151 @@
+source,target,value
+Alabama,Shootings,11
+Alaska,Shootings,1
+Arizona,Shootings,13
+Arkansas,Shootings,2
+California,Shootings,34
+Colorado,Shootings,6
+Connecticut,Shootings,3
+Delaware,Shootings,1
+Florida,Shootings,23
+Georgia,Shootings,16
+Hawaii,Shootings,1
+Idaho,Shootings,1
+Illinois,Shootings,11
+Indiana,Shootings,1
+Iowa,Shootings,1
+Kansas,Shootings,5
+Kentucky,Shootings,6
+Louisiana,Shootings,6
+Maine,Shootings,1
+Maryland,Shootings,2
+Massachusetts,Shootings,5
+Michigan,Shootings,10
+Minnesota,Shootings,4
+Mississippi,Shootings,4
+Missouri,Shootings,4
+Montana,Shootings,2
+Nebraska,Shootings,3
+Nevada,Shootings,5
+New Hampshire,Shootings,
+New Jersey,Shootings,4
+New Mexico,Shootings,5
+New York,Shootings,11
+North Carolina,Shootings,10
+North Dakota,Shootings,
+Ohio,Shootings,9
+Oklahoma,Shootings,5
+Oregon,Shootings,4
+Pennsylvania,Shootings,8
+Rhode Island,Shootings,
+South Carolina,Shootings,5
+South Dakota,Shootings,1
+Tennessee,Shootings,7
+Texas,Shootings,19
+Utah,Shootings,2
+Vermont,Shootings,1
+Virginia,Shootings,10
+Washington,Shootings,13
+West Virginia,Shootings,1
+Wisconsin,Shootings,8
+Wyoming,Shootings,1
+Alabama,Deaths,32
+Alaska,Deaths,2
+Arizona,Deaths,52
+Arkansas,Deaths,5
+California,Deaths,164
+Colorado,Deaths,43
+Connecticut,Deaths,42
+Delaware,Deaths,13
+Florida,Deaths,31
+Georgia,Deaths,4
+Hawaii,Deaths,7
+Idaho,Deaths,3
+Illinois,Deaths,38
+Indiana,Deaths,0
+Iowa,Deaths,6
+Kansas,Deaths,14
+Kentucky,Deaths,31
+Louisiana,Deaths,14
+Maine,Deaths,4
+Maryland,Deaths,1
+Massachusetts,Deaths,13
+Michigan,Deaths,30
+Minnesota,Deaths,22
+Mississippi,Deaths,13
+Missouri,Deaths,15
+Montana,Deaths,6
+Nebraska,Deaths,14
+Nevada,Deaths,13
+New Hampshire,Deaths,
+New Jersey,Deaths,8
+New Mexico,Deaths,12
+New York,Deaths,43
+North Carolina,Deaths,32
+North Dakota,Deaths,
+Ohio,Deaths,21
+Oklahoma,Deaths,26
+Oregon,Deaths,17
+Pennsylvania,Deaths,28
+Rhode Island,Deaths,
+South Carolina,Deaths,18
+South Dakota,Deaths,6
+Tennessee,Deaths,13
+Texas,Deaths,121
+Utah,Deaths,7
+Vermont,Deaths,2
+Virginia,Deaths,58
+Washington,Deaths,68
+West Virginia,Deaths,5
+Wisconsin,Deaths,40
+Wyoming,Deaths,1
+Alabama,Law,10
+Alaska,Law,4
+Arizona,Law,11
+Arkansas,Law,11
+California,Law,104
+Colorado,Law,30
+Connecticut,Law,89
+Delaware,Law,39
+Florida,Law,21
+Georgia,Law,6
+Hawaii,Law,78
+Idaho,Law,4
+Illinois,Law,64
+Indiana,Law,12
+Iowa,Law,25
+Kansas,Law,7
+Kentucky,Law,7
+Louisiana,Law,12
+Maine,Law,12
+Maryland,Law,64
+Massachusetts,Law,100
+Michigan,Law,21
+Minnesota,Law,41
+Mississippi,Law,5
+Missouri,Law,7
+Montana,Law,4
+Nebraska,Law,22
+Nevada,Law,15
+New Hampshire,Law,10
+New Jersey,Law,67
+New Mexico,Law,10
+New York,Law,75
+North Carolina,Law,30
+North Dakota,Law,14
+Ohio,Law,16
+Oklahoma,Law,9
+Oregon,Law,35
+Pennsylvania,Law,36
+Rhode Island,Law,43
+South Carolina,Law,12
+South Dakota,Law,5
+Tennessee,Law,22
+Texas,Law,18
+Utah,Law,11
+Vermont,Law,6
+Virginia,Law,13
+Washington,Law,43
+West Virginia,Law,21
+Wisconsin,Law,23
+Wyoming,Law,9
