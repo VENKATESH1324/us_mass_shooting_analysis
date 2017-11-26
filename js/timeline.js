@@ -11,6 +11,7 @@ class TimeLine {
 
         // var x = d3.scaleLinear()
         //     .rangeRound([0, width]);
+
  var x = d3.time.scale()
         .range([0, width]);
 
@@ -23,9 +24,14 @@ class TimeLine {
         .scale(x)
         .orient("bottom");
 
+
         var yAxis = d3.svg.axis()
         .scale(y)
         .orient("right");
+
+        var brush = d3.brush.(x)
+            .extent([[0, 0], [width, height]])
+            .on("brush end", brushed);
 
 
         var line = d3.svg.line()
@@ -49,8 +55,8 @@ class TimeLine {
             // d3.select("#xAxis").attr("transform",
             //     "translate(" + margin.left + "," + margin.top + ")");
 
-           
 
+            //x.domain(d3.extent(data, function(d) { return d.year; }));
             x.domain(data.map(function (d) { return d.year; }));
 
             y.domain(d3.extent(data, function (d) { return d.deaths; }));
@@ -58,11 +64,12 @@ class TimeLine {
             // let xAxis = g.append("g")
             //     .attr("transform", "translate(0," + height + ")").attr("id", "brush_g")
             //     .call(d3.svg.axis().scale(x).orient("bottom"));
+
             svg.append("g")
           .attr("class", "x axis")
           .attr("transform", "translate(-16," + height + ")")   //here used 18 to calibrate line chart wit x-axis ticks
           .call(xAxis);
-              
+
 
         svg.append("g")
           .attr("class", "y axis").attr("y",-50)
@@ -82,31 +89,6 @@ class TimeLine {
 
         });
 
-        var brush = d3.svg.brush().x(x).extent([[10, 475], [width, 495]]).on("brush", brushed);
-        d3.select("#timeline").append("g").attr("class", "brush").call(brush);
-
-
-        function brushed() {
-            //let selectedStates = [];
-            //let selectedData = d3.event.selection;
-
-            //var yearBrush = line.data();
-            //console.log(line.data());
-            // console.log(selectedData);
-            // yearBrush.forEach(function(d,i){
-
-            //     console.log(d);
-            //     let comp = xScale(i);
-            //     if(comp>selectedData[0] && comp<selectedData[1]){
-            //         selectedStates.push(d.YEAR);
-            //     }
-
-            // })
-            console.log("selectedData");
-
-            //self.shiftChart.update(selectedStates);
-
-        }
 
     }
 }
