@@ -2,15 +2,14 @@ class SankeyChart {
     constructor() {
        }
     drawChart() {
-
         var units = "Widgets";
 
         var margin = { top: 10, right: 10, bottom: 10, left: 10 },
-            width = 700 - margin.left - margin.right,
-            height = 300 - margin.top - margin.bottom;
+            width = 1500 - margin.left - margin.right,
+            height = 4000 - margin.top - margin.bottom;
 
         var formatNumber = d3.format(",.0f"),    // zero decimal places
-            format = function (d) { return formatNumber(d) + " " + units; },
+            format = function (d) { return formatNumber(d); },
             color = d3.scale.category20();
 
         // append the svg canvas to the page
@@ -100,7 +99,7 @@ class SankeyChart {
 
             // add the rectangles for the nodes
             node.append("rect")
-                .attr("height", function (d) { return d.dy; })
+                .attr("height", function (d) { return Math.abs(d.dy); })
                 .attr("width", sankey.nodeWidth())
                 .style("fill", function (d) {
                     return d.color = color(d.name.replace(/ .*/, ""));
@@ -135,6 +134,5 @@ class SankeyChart {
                 link.attr("d", path);
             }
         });
-
     }
 }
