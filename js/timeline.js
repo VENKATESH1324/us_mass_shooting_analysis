@@ -29,11 +29,6 @@ class TimeLine {
         .scale(y)
         .orient("right");
 
-        var brush = d3.brush.(x)
-            .extent([[0, 0], [width, height]])
-            .on("brush end", brushed);
-
-
         var line = d3.svg.line()
             .x(function (d) { return x(d.year); })
             .y(function (d) { return y(d.deaths); });
@@ -81,13 +76,42 @@ class TimeLine {
           .style("text-anchor", "end")
           .text("Death Rate").attr("x",-20).attr("y",50);
 
-      svg.append("path")
+     var symbol = svg.append("path")
         .datum(data)
         .attr("class", "line")
         .attr("d", line)
         .style({"stroke":"steelblue", "stroke-width":"1.5px", "fill":"none"});
 
         });
+
+        // var symbol = svg.append("g").selectAll("path")
+        //     .data(data)
+        //     .enter().append("path")
+        //     .attr("transform", function(d) { return "translate(" + x(d) + "," + (height / 2) + ")"; })
+        //     .attr("d", d3.svg.symbol().type(String).size(200));
+
+        svg.append("g")
+            .attr("class", "brush")
+            .call(d3.svg.brush().x(x)
+                .on("brushstart", brushstart)
+                .on("brush", brushmove)
+                .on("brushend", brushend))
+            .selectAll("rect")
+            .attr("height", height);
+
+        function brushstart() {
+            svg.classed("selecting", true);
+        }
+
+        function brushmove() {
+            var s = d3.event.target.extent();
+            console.log(s);
+            //symbol.classed("selected", function(d) { return s[0] <= (d = x(d)) && d <= s[1]; });
+        }
+
+        function brushend() {
+            svg.classed("selecting", !d3.event.target.empty());
+        }
 
 
     }
