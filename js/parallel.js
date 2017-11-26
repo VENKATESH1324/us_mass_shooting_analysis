@@ -85,6 +85,8 @@ class ParallelChart {
                     }) ? null : "none";
                 });
             }
+            let sankeyChart = new SankeyChart();
+            sankeyChart.drawChart();            
         });
     }
 }
