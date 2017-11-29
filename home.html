@@ -29,10 +29,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Home
-                    <span class="sr-only">(current)</span>
-                </a>
-                <a class="nav-item nav-link" href="#">Visualizations</a>
+                <a id="home" class="nav-item nav-link active" href="#">Home</a>
+                <a id="viz" class="nav-item nav-link" href="#">Visualizations</a>
                 <a id="videolink" class="nav-item nav-link" href="#" data-toggle="modal" data-src="https://www.youtube.com/embed/Jfrjeg26Cwk" data-target="#myModal">Demo</a>
                 <a class="nav-item nav-link" href="VIS Project.pdf" target="blank">Process Book</a>
             </div>
@@ -54,11 +52,38 @@
         </div>
     </div>
     <br>
-    <svg id="timeline" width="1500" height="500">
-        <g id="xAxis"></g>
-    </svg>
-    <p id="chart"></p>
+
+
+    <div id="home_content"  style="display:block">
+
+    </div>
+    <div id="viz_content"  style="display:none">
+        <svg id="timeline" width="1500" height="500">
+            <g id="xAxis"></g>
+        </svg>
+    </div>
+    <!-- Local js files for visualization -->
+    <script type="application/javascript" src="js/timeline.js"></script>
+    <script type="application/javascript" src="js/parallel.js"></script>
+    <script type="application/javascript" src="js/map.js"></script>
+    <script type="application/javascript" src="js/sankey.js"></script>
+    <script src="library/sankey.js"></script>
+    <script type="application/javascript" src="js/script.js"></script>
+    </div>
+
     <script>
+        $("#viz").click(function() {
+            $("#home").removeClass("active");
+            $("#viz").addClass("active");
+            $("#home_content").css('display','none');
+            $("#viz_content").css('display', 'block');
+        });
+        $("#home").click(function () {
+            $("#viz").removeClass("active");
+            $("#home").addClass("active");
+            $("#viz_content").css('display', 'none');;
+            $("#home_content").css('display', 'block');
+        });
         $(document).ready(function () {
             // Gets the video src from the data-src
             var $videoSrc;
@@ -77,13 +102,6 @@
             })
         });
     </script>
-    <!-- Local js files for visualization -->
-    <script type="application/javascript" src="js/timeline.js"></script>
-    <script type="application/javascript" src="js/parallel.js"></script>
-    <script type="application/javascript" src="js/map.js"></script>
-    <script type="application/javascript" src="js/sankey.js"></script>
-    <script src="library/sankey.js"></script>
-    <script type="application/javascript" src="js/script.js"></script>
 </body>
 
 </html>

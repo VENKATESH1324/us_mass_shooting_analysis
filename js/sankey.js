@@ -13,7 +13,7 @@ class SankeyChart {
             color = d3.scale.category20();
 
         // append the svg canvas to the page
-        var svg = d3.select("body").append("svg")
+        var svg = d3.select("#viz_content").append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
