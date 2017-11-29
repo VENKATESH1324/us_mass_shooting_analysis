@@ -34,7 +34,7 @@
                 </a>
                 <a class="nav-item nav-link" href="#">Visualizations</a>
                 <a id="videolink" class="nav-item nav-link" href="#" data-toggle="modal" data-src="https://www.youtube.com/embed/Jfrjeg26Cwk" data-target="#myModal">Demo</a>
-                <a class="nav-item nav-link" href="#">Process Book</a>
+                <a class="nav-item nav-link" href="VIS Project.pdf" target="blank">Process Book</a>
             </div>
         </div>
     </nav>
@@ -53,7 +53,6 @@
             </div>
         </div>
     </div>
-    <!-- <h1>US Gun Violence Stats</h1> -->
     <br>
     <svg id="timeline" width="1500" height="500">
         <g id="xAxis"></g>
@@ -61,22 +60,19 @@
     <p id="chart"></p>
     <script>
         $(document).ready(function () {
-            // Gets the video src from the data-src on each button
+            // Gets the video src from the data-src
             var $videoSrc;
             $('#videolink').click(function () {
-                //console.log($(this).data("src"));
                 $videoSrc = $(this).data("src");
-                //console.log($videoSrc);
             });
             // when the modal is opened autoplay it  
             $('#myModal').on('shown.bs.modal', function (e) {
                 console.log($videoSrc)
-                // set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
+                // set the video src to autoplay and not to show related video
                 $("#video").attr('src', $videoSrc + "?rel=0&amp;showinfo=0&amp;modestbranding=1&amp;autoplay=1");
             })
-            // stop playing the youtube video when I close the modal
+            // stop playing the youtube video when modal is closed
             $('#myModal').on('hide.bs.modal', function (e) {
-                // a poor man's stop video
                 $("#video").attr('src', $videoSrc);
             })
         });
