@@ -4,6 +4,7 @@ class Map {
         this.margin = { top: 30, right: 10, bottom: 10, left: 10 },
         this.width = 960 - this.margin.left - this.margin.right,
         this.height = 500 - this.margin.top - this.margin.bottom;
+
     }
 
     // drawChart() {
@@ -83,6 +84,8 @@ class Map {
             d3.json("data/us-map.json", function (json) {
                 // Load in the agriculture data; note that, unlike the city data,
                 // we have to do this AFTER we've already loaded the GeoJSON data
+
+
                 d3.csv("data/cumulative_data.csv", function (stateData) {
                     // Set input domain for color scale based on the lowest and highest values in the data
                     color.domain([
@@ -108,7 +111,7 @@ class Map {
                     });
 
                     // Bind data and create one path per GeoJSON feature
-                    svg.selectAll("path")
+                   var mapDesign =  svg.selectAll("path")
                         .data(json.features)
                         .enter()
                         .append("path")
@@ -125,11 +128,51 @@ class Map {
                                     })
                                     .on("mouseout", () => {
                                         div.style("opacity", 0);
-                                    });
+                                    }).on("click",(d)=>{
+
+
+                                       // console.log(d.properties.name);
+                                        //stateTimeLine(d.properties.name);
+                                        var stateName = d.properties.name;
+                    console.log(stateName);
+
+                        var map = new Map();
+                        //console.log(yearSelected);
+                        var fileSelected = "data/"+stateName+".csv";
+                        console.log(fileSelected);
+                    var statechart = new StateTimeline();
+                    statechart.update(fileSelected);
+
+                        //stateTimeline(fileSelected);
+                        // d3.csv(fileSelected, function (error, csvData) {
+                        //     // self.electoralVoteChart.update(csvData,self.colorScale);
+                        //     // self.votePercentageChart.update(csvData,self.colorScale);
+                        //     // self.tileChart.update(csvData,self.colorScale);
+                        //     console.log(csvData);
+                        //
+                        // });
+
+                    });
                 });
             });
-            let parallelChart = new ParallelChart();
+            var parallelChart = new ParallelChart();
                     parallelChart.drawChart();
 
+
+
+
+           // function stateTimeline(fileSelected){
+           //      console.log(fileSelected);
+           //      d3.csv(fileSelected, function (error, csvData) {
+           //          // self.electoralVoteChart.update(csvData,self.colorScale);
+           //          // self.votePercentageChart.update(csvData,self.colorScale);
+           //          // self.tileChart.update(csvData,self.colorScale);
+           //          console.log(csvData);
+           //      });
+           //
+           //  }
         }
+
+
+
 }

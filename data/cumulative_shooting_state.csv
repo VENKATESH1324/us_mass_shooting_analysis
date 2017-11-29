@@ -1,0 +1,211 @@
+"id","State","year","sum"
+"1","Alabama",2009,10
+"2","Alabama",2010,3
+"3","Alabama",2011,1
+"4","Alabama",2012,8
+"5","Alabama",2013,3
+"6","Alabama",2015,3
+"7","Alabama",2016,3
+"8","Alaska",1997,2
+"9","Arizona",1966,5
+"10","Arizona",1991,9
+"11","Arizona",2002,3
+"12","Arizona",2008,0
+"13","Arizona",2011,6
+"14","Arizona",2013,2
+"15","Arizona",2015,10
+"16","Arizona",2016,11
+"17","Arkansas",1998,5
+"18","Arkansas",2008,2
+"19","California",1976,8
+"20","California",1979,2
+"21","California",1984,23
+"22","California",1988,7
+"23","California",1989,8
+"24","California",1992,4
+"25","California",1993,9
+"26","California",1996,3
+"27","California",1997,4
+"28","California",1998,0
+"29","California",2001,2
+"30","California",2006,7
+"31","California",2008,9
+"32","California",2009,5
+"33","California",2011,8
+"34","California",2012,7
+"35","California",2013,13
+"36","California",2014,7
+"37","California",2015,14
+"38","California",2016,8
+"39","Colorado",1993,4
+"40","Colorado",1999,13
+"41","Colorado",2007,4
+"42","Colorado",2012,12
+"43","Colorado",2015,6
+"44","Connecticut",1998,4
+"45","Connecticut",2010,8
+"46","Connecticut",2012,27
+"47","Delaware",2016,0
+"48","District of Columbia",2013,12
+"49","Florida",1982,8
+"50","Florida",1987,6
+"51","Florida",1988,1
+"52","Florida",1990,11
+"53","Florida",1996,6
+"54","Florida",1999,5
+"55","Florida",2012,0
+"56","Florida",2013,6
+"57","Florida",2014,0
+"58","Florida",2015,8
+"59","Florida",2016,13
+"60","Georgia",1985,2
+"61","Georgia",1999,9
+"62","Georgia",2012,4
+"63","Georgia",2014,0
+"64","Georgia",2015,18
+"65","Georgia",2016,1
+"66","Hawaii",1999,7
+"67","Idaho",2015,3
+"68","Illinois",1974,1
+"69","Illinois",1988,5
+"70","Illinois",2001,5
+"71","Illinois",2003,6
+"72","Illinois",2008,5
+"73","Illinois",2013,6
+"74","Illinois",2015,2
+"75","Illinois",2016,1
+"76","Indiana",2015,0
+"77","Iowa",1991,5
+"78","Kansas",1985,1
+"79","Kansas",2016,12
+"80","Kentucky",1989,8
+"81","Kentucky",1994,4
+"82","Kentucky",1997,3
+"83","Kentucky",2008,6
+"84","Kentucky",2016,6
+"85","Louisiana",1972,9
+"86","Louisiana",1988,0
+"87","Louisiana",2014,1
+"88","Louisiana",2015,2
+"89","Louisiana",2016,0
+"90","Maine",2015,3
+"91","Maryland",2016,1
+"92","Massachusetts",1992,2
+"93","Massachusetts",1994,2
+"94","Massachusetts",2000,7
+"95","Massachusetts",2016,2
+"96","Michigan",1991,4
+"97","Michigan",1993,2
+"98","Michigan",2007,0
+"99","Michigan",2011,7
+"100","Michigan",2016,14
+"101","Minnesota",2005,9
+"102","Minnesota",2012,6
+"103","Minnesota",2015,4
+"104","Mississippi",1997,2
+"105","Mississippi",2003,6
+"106","Mississippi",2015,2
+"107","Mississippi",2016,1
+"108","Missouri",2008,5
+"109","Missouri",2015,7
+"110","Missouri",2016,1
+"111","Montana",1986,1
+"112","Montana",2015,4
+"113","Nebraska",2007,8
+"114","Nebraska",2015,5
+"115","Nevada",1982,1
+"116","Nevada",2007,0
+"117","Nevada",2011,4
+"118","Nevada",2013,1
+"119","Nevada",2014,3
+"120","New Jersey",1991,3
+"121","New Jersey",1995,4
+"122","New Jersey",2015,1
+"123","New Jersey",2016,0
+"124","New Mexico",2013,5
+"125","New Mexico",2014,1
+"126","New Mexico",2015,1
+"127","New Mexico",2016,2
+"128","New York",1974,3
+"129","New York",1986,1
+"130","New York",1992,4
+"131","New York",1993,6
+"132","New York",2009,13
+"133","New York",2013,4
+"134","New York",2015,7
+"135","New York",2016,1
+"136","North Carolina",1993,4
+"137","North Carolina",1995,2
+"138","North Carolina",2006,1
+"139","North Carolina",2009,8
+"140","North Carolina",2015,12
+"141","North Carolina",2016,3
+"142","Ohio",1994,1
+"143","Ohio",2003,1
+"144","Ohio",2004,4
+"145","Ohio",2007,0
+"146","Ohio",2011,1
+"147","Ohio",2012,3
+"148","Ohio",2015,7
+"149","Oklahoma",1986,14
+"150","Oklahoma",1999,0
+"151","Oklahoma",2012,3
+"152","Oklahoma",2013,4
+"153","Oklahoma",2015,3
+"154","Oregon",1998,4
+"155","Oregon",2007,0
+"156","Oregon",2012,2
+"157","Oregon",2015,9
+"158","Pennsylvania",1998,1
+"159","Pennsylvania",2006,5
+"160","Pennsylvania",2013,3
+"161","Pennsylvania",2014,6
+"162","Pennsylvania",2015,0
+"163","Pennsylvania",2016,11
+"164","South Carolina",1979,2
+"165","South Carolina",1983,1
+"166","South Carolina",1988,2
+"167","South Carolina",1997,4
+"168","South Carolina",2015,9
+"169","South Dakota",2015,5
+"170","Tennessee",1995,2
+"171","Tennessee",2015,7
+"172","Tennessee",2016,2
+"173","Texas",1966,16
+"174","Texas",1984,6
+"175","Texas",1991,23
+"176","Texas",1992,0
+"177","Texas",1995,5
+"178","Texas",1999,7
+"179","Texas",2005,2
+"180","Texas",2009,13
+"181","Texas",2013,4
+"182","Texas",2014,3
+"183","Texas",2015,19
+"184","Texas",2016,13
+"185","Utah",1993,0
+"186","Utah",2007,5
+"187","Vermont",2006,2
+"188","Virginia",2002,3
+"189","Virginia",2007,32
+"190","Virginia",2015,2
+"191","Virginia",2016,15
+"192","Washington",1971,1
+"193","Washington",1983,13
+"194","Washington",1994,4
+"195","Washington",1996,3
+"196","Washington",2006,6
+"197","Washington",2007,6
+"198","Washington",2009,4
+"199","Washington",2012,5
+"200","Washington",2013,4
+"201","Washington",2014,5
+"202","Washington",2016,8
+"203","West Virginia",2014,4
+"204","Wisconsin",1997,1
+"205","Wisconsin",2004,6
+"206","Wisconsin",2005,7
+"207","Wisconsin",2007,6
+"208","Wisconsin",2012,9
+"209","Wisconsin",2015,5
+"210","Wyoming",1993,0

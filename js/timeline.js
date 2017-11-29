@@ -107,6 +107,7 @@ class TimeLine {
             var s = d3.event.target.extent();
             console.log(s);
             //symbol.classed("selected", function(d) { return s[0] <= (d = x(d)) && d <= s[1]; });
+
         }
 
         function brushend() {
