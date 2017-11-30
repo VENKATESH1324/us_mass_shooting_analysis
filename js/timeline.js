@@ -46,11 +46,6 @@ class TimeLine {
         }, function (error, data) {
             if (error) throw error;
 
-            // x.domain(d3.extent(data, function(d) { return parseInt(d.year); }));
-            // d3.select("#xAxis").attr("transform",
-            //     "translate(" + margin.left + "," + margin.top + ")");
-
-
             //x.domain(d3.extent(data, function(d) { return d.year; }));
             x.domain(data.map(function (d) { return d.year; }));
 
@@ -63,7 +58,7 @@ class TimeLine {
             svg.append("g")
           .attr("class", "x axis")
           .attr("transform", "translate(-16," + height + ")")   //here used 18 to calibrate line chart wit x-axis ticks
-          .call(xAxis);
+          .call(xAxis).selectAll('text').attr("transform", "rotate(-90)").attr("x",-20).attr("y",-5);
 
 
         svg.append("g")
