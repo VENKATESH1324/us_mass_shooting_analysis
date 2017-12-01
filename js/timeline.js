@@ -5,15 +5,6 @@ class TimeLine {
             margin = { top: 20, right: 0, bottom: 30, left: 70 },
             width = +svg.attr("width") - margin.left - margin.right,
             height = +svg.attr("height") - margin.top - margin.bottom;
-           // g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-        //var parseTime = d3.timeParse("%x");
-
-        // var x = d3.scaleLinear()
-        //     .rangeRound([0, width]);
-
- var x = d3.time.scale()
-        .range([0, width]);
 
         var y = d3.scale.linear()
             .range([height, 0]);
@@ -88,26 +79,45 @@ class TimeLine {
         svg.append("g")
             .attr("class", "brush")
             .call(d3.svg.brush().x(x)
-                .on("brushstart", brushstart)
-                .on("brush", brushmove)
-                .on("brushend", brushend))
+                //.on("brushstart", brushstart)
+                .on("brush", brushmove))
+                //.on("brushend", brushend))
             .selectAll("rect")
             .attr("height", height);
 
-        function brushstart() {
-            svg.classed("selecting", true);
-        }
+       var brush =   d3.svg.brush().x(x).on("brush",brushmove);
+
+        // function brushed(){
+        //                         var selected =  x.domain()
+        //                         .filter(function(d){return (brush.extent()[0] <= x(d)) && (x(d) <= brush.extent()[1])});
+        //                         d3.select(".selected").text(selected.concat(","));
+        //                         console.log(selected);
+        //                 }
+
+        // function brushstart() {
+        //     svg.classed("selecting", true);
+        // }
+
+
 
         function brushmove() {
             var s = d3.event.target.extent();
             console.log(s);
+            //console.log(x(s[0]));
             //symbol.classed("selected", function(d) { return s[0] <= (d = x(d)) && d <= s[1]; });
+            var selected =  x.domain()
+                .filter(function(d){return (s[0] <= x(d)) && (x(d) <= s[1])});
+
+            //d3.select(".selected").text(selected.concat(","));
+            var rangeExtent = [x( s[0] ), x( s[1] ) ];
+
+            console.log(selected);
 
         }
 
-        function brushend() {
-            svg.classed("selecting", !d3.event.target.empty());
-        }
+        // function brushend() {
+        //     svg.classed("selecting", !d3.event.target.empty());
+        // }
 
 
     }

@@ -54,7 +54,7 @@ class Map {
     // }
 
         drawChart(){
-                var div = d3.select("body").append("div")
+                var div = d3.select("body").append("div").attr("id","idmap")
                     .attr("class", "tooltip")
                     .style("opacity", 0);
 
@@ -129,14 +129,15 @@ class Map {
                                     .on("mouseout", () => {
                                         div.style("opacity", 0);
                                     }).on("click",(d)=>{
-
+                                        //d3.select(this).attr("fill","red");
+                        d3.select(this).style("fill","orange");
 
                                        // console.log(d.properties.name);
                                         //stateTimeLine(d.properties.name);
                                         var stateName = d.properties.name;
                     console.log(stateName);
 
-                        var map = new Map();
+                        //var map = new Map();
                         //console.log(yearSelected);
                         var fileSelected = "data/"+stateName+".csv";
                         console.log(fileSelected);
