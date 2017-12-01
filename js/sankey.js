@@ -3,17 +3,17 @@ class SankeyChart {
        }
     drawChart() {
         var units = "Widgets";
-
+        var states = ["Texas","Utah"];
         var margin = { top: 10, right: 10, bottom: 10, left: 10 },
-            width = 1500 - margin.left - margin.right,
-            height = 4000 - margin.top - margin.bottom;
+            width = 700 - margin.left - margin.right,
+            height = 500 - margin.top - margin.bottom;
 
         var formatNumber = d3.format(",.0f"),    // zero decimal places
             format = function (d) { return formatNumber(d); },
             color = d3.scale.category20();
 
         // append the svg canvas to the page
-        var svg = d3.select("#viz_content").append("svg")
+        var svg = d3.select("#sankey").append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
@@ -30,11 +30,20 @@ class SankeyChart {
 
         // load the data (using the timelyportfolio csv method)
         d3.csv("data/sankey_data.csv", function (error, data) {
-
+            /* var new_data = data.filter((d) => {
+                return d.source == "Texas";
+            }); */
+            var new_data = [];
+            data.forEach(d => {
+                if(states.includes(d.source)){
+                    new_data.push(d);
+                }    
+            });
+            console.log(new_data);
             //set up graph in same style as original example but empty
             var graph = { "nodes": [], "links": [] };
 
-            data.forEach(function (d) {
+            new_data.forEach(function (d) {
                 graph.nodes.push({ "name": d.source });
                 graph.nodes.push({ "name": d.target });
                 graph.links.push({

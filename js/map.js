@@ -12,7 +12,7 @@ class Map {
             .attr("class", "tooltip")
             .style("opacity", 0);
         
-        var svg = d3.select("#viz_content").append("svg")
+        var svg = d3.select("#map").append("svg")
             .attr("id","us-map")
             .attr("width", this.width + this.margin.left + this.margin.right)
             .attr("height", this.height + this.margin.top + this.margin.bottom)

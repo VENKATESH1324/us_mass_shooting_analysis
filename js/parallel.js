@@ -14,7 +14,7 @@ class ParallelChart {
             background,
             foreground;
 
-        var svg = d3.select("#viz_content").append("svg")
+        var svg = d3.select("#parallel").append("svg")
             .attr("width", this.width + this.margin.left + this.margin.right)
             .attr("height", this.height + this.margin.top + this.margin.bottom)
             .append("g")
