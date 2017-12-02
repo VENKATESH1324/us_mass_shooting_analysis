@@ -81,12 +81,10 @@ class ParallelChart {
                     extents = actives.map(function (p) { return y[p].brush.extent(); });
                 var states = [];
                 foreground.style("display", function (d) {
-                    //displayTable(states);
+                    displayTable(states);
                     if (actives.every(function (p, i) {return extents[i][0] <= d[p] && d[p] <= extents[i][1];})){
-                        states.push(d);
-                        
+                        states.push(d);   
                     }
-                        
                     return actives.every(function (p, i) {
                         return extents[i][0] <= d[p] && d[p] <= extents[i][1];
                     }) ? null : "none";
@@ -95,6 +93,7 @@ class ParallelChart {
             }
 
             function displayTable(states) {
+                d3.select("#tableRow").selectAll("*").remove();
                 var body = d3.select("#tableRow").selectAll("tr")
                              .data(states)
                              .enter();
