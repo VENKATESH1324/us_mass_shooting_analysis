@@ -12,8 +12,8 @@ class Map {
         var div = d3.select("body").append("div")
             .attr("class", "tooltip")
             .style("opacity", 0);
-    
-        var svg = d3.select("body").append("svg")
+        
+        var svg = d3.select("#map").append("svg")
             .attr("id","us-map")
             .attr("width", this.width + this.margin.left + this.margin.right)
             .attr("height", this.height + this.margin.top + this.margin.bottom)
@@ -48,8 +48,8 @@ class Map {
                 .on("mouseout", () => {
                     div.style("opacity", 0);
                 });
-            let parallelChart = new ParallelChart();
-            parallelChart.drawChart();
+            let sankeyChart = new SankeyChart();
+            sankeyChart.initializaStates();
         });
     }
 

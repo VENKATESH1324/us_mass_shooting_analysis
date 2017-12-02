@@ -69,6 +69,7 @@ class TimeLine {
 
         });
 
+<<<<<<< HEAD
         svg.append("g")
             .attr("class", "brush")
             .call(d3.svg.brush().x(x)

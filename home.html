@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Gun Violence in US</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Bootstrap Libraries -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+    crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+    crossorigin="anonymous"></script>
+    <!-- D3 libraries -->
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <!-- <script src="http://d3js.org/topojson.v1.min.js"></script> -->
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a id="home" class="nav-item nav-link active" href="#">Home</a>
+                <a id="viz" class="nav-item nav-link" href="#">Visualizations</a>
+                <a id="videolink" class="nav-item nav-link" href="#" data-toggle="modal" data-src="https://www.youtube.com/embed/Jfrjeg26Cwk" data-target="#myModal">Demo</a>
+                <a class="nav-item nav-link" href="VIS Project.pdf" target="blank">Process Book</a>
+            </div>
+        </div>
+    </nav>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <!-- 16:9 aspect ratio -->
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="" id="video" allowfullscreen="allowfullscreen" allowscriptaccess="always">></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="home_content"  style="display:block">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container" style="margin-left:150px;">
+                <h1 class="display-3">Gun Violence in United States</h1>
+                <p class="lead">An exploratory analysis of mass shootings in US in past 40 years.</p>
+                <a href="https://github.com/abhishekchandran/us_mass_shooting_analysis" value="View on GitHub" target="_blank"
+                    class="btn btn-dark">View on GitHub</a>
+            </div>
+        </div>
+        <div class="container" style="margin-left:150px;">
+            <p class="lead text-justify" style="font-weight: 350;">
+                Gun Violence is US is a major concern that results in tens of thousands od deaths and injuries anually. In 2013 there
+                were aruond 73,505 nonfatal firearm injuries i.e. 23.2 injuries per 100,000 U.S. citizens. Of the 2,596,993 total
+                deaths in the US in 2013, 1.3% were related to firearms. The ownership and control of guns are among the most widely
+                debated issues in the country.
+            </p>
+        </div><br>
+        <div class="container col-sm-10">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" style="width:89%">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="css/1.PNG" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="css/2.PNG" alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="css/3.PNG" alt="Third slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="css/4.PNG" alt="Third slide">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div id="text"></br>
+            <div class="container" style="margin-left:150px; font-weight:none;">
+                <p class="lead text-justify" style="font-weight: 350;">Gun culture in the US is often seen as an outlier globally.
+                    The number of firearms available to American civilians is estimated at around 310 million,
+                    according to a 2009 National Institute of Justice (NIJ) report. 
+                    India is home to the second largest civilian firearm stockpile, estimated at 46 million.
+                </p>
+                <p class="lead text-justify" style="font-weight: 350;">
+                    Americans own the most guns per person in the world, about four in 10 saying they either own a gun
+                    or live in a home with guns, according to a recent Pew Center study. Forty-eight percent of Americans
+                    said they grew up in a house with guns. According to the survey, a majority (66%) of US gun owners own 
+                    multiple firearms, with nearly three-quarters of gun owners saying they couldn't imagine not owning one.
+                </p>
+                <p class="lead text-justify" style="font-weight: 350;">
+                    When it comes to gun massacres, the US is an anomaly. There are more public mass shootings in America 
+                    than in any other country in the world. Globally, restrictive gun laws have proven to make a difference in 
+                    curbing massacres. In Australia, for example, four mass shootings occurred between 1987 and 1996. 
+                    After those incidents, public opinion turned against gun ownership and Parliament passed stricter gun laws.
+                    Australia hasn't had a mass shooting since.
+                </p>
+                <p class="lead text-justify" style="font-weight: 350;">
+                    Here we are trying to create visualization using D3 based on dataset published by Stanford on mass shooting in United States.
+                    Visualizations we have created are with respect to mass shootings that have taken place in past forty years i.e. 1966 to 2016,
+                    we have not considered suicides or individual shootings in this project, though they have been mentioned in overall stats in 
+                    this page. We also aim to find relationship between tighter gun laws and number of events.
+                </p><br>
+                <h3>References:</h3>
+                <p class="lead text-justify" style="font-weight: 350; text-indent:50px;">
+                    [1] Mass shooting dataset -<a href="https://www.kaggle.com/carlosparadis/stanford-msa/data" target="_blank">Kaggle </a>
+                </p>
+                <p class="lead text-justify" style="font-weight: 350; text-indent:50px;">
+                    [2] State Arms Law dataset -<a href="https://www.statefirearmlaws.org/table.html" target="_blank"> State FireArm Laws </a>
+                </p>
+                <p class="lead text-justify" style="font-weight: 350; text-indent:50px">
+                    [3] America's unique gun problem -<a href="https://www.vox.com/policy-and-politics/2017/10/2/16399418/us-gun-violence-statistics-maps-charts" target="_blank">
+                        Vox Article</a>
+                </p>
+                <p class="lead text-justify" style="font-weight: 350; text-indent:50px;">
+                    [4] How US gun culture compares with world -<a href="http://www.cnn.com/2017/10/03/americas/us-gun-statistics/index.html" target="_blank">
+                        CNN Article</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="viz_content"  style="display:none">
+        <br>
+        <svg id="timeline" width="1500" height="500">
+            <g id="xAxis"></g>
+        </svg>
+        <div id="map"></div>
+        <div id="sankey">
+        <br/>
+            <br/>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="button-group">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Add More States to Sankey
+                            </a>
+                            <ul id="dropdownMenu" class="dropdown-menu" style="height:200px; overflow:auto; width:21%;">
+                                <input type="search" class="form-control ds-input" onkeyup="search()" id="search-input" placeholder="Search..." autocomplete="off" spellcheck="false"
+                                    role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><br><br>
+        <div id="parallel" class="row">
+            <div id="parallelChart" class="col-sm-6" style="padding-right:0"></div>
+            <div id="table" class="col-sm-5" style="margin-top:35px; height:450px; overflow:auto;">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="text-center" scope="col">State</th>
+                            <th class="text-center" scope="col">Law</th>
+                            <th class="text-center" scope="col"># of Shootings</th>
+                            <th class="text-center" scope="col"># of Deaths</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableRow">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Local js files for visualization -->
+    <script type="application/javascript" src="js/timeline.js"></script>
+    <script type="application/javascript" src="js/parallel.js"></script>
+    <script type="application/javascript" src="js/map.js"></script>
+    <script type="application/javascript" src="js/sankey.js"></script>
+    <script src="library/sankey.js"></script>
+    <script type="application/javascript" src="js/script.js"></script>
+    </div>
+
+    <script>
+        d3.csv("data/cumulative_data.csv", function (error, data) {
+                if (error) throw error;
+                var ul = d3.select("#dropdownMenu")
+                    .selectAll("li")
+                    .data(data)
+                    .enter();
+                var li = ul.append("li");
+                var element = li.append("a")
+                    .classed("dropdown-item", true)
+                    .attr("data-value", (d) => { return d.state })
+                    .attr("tabIndex", "-1")
+                var input = element.append("input")
+                    .attr("type", "checkbox")
+                var text = element.append("text").text((d) => { return " " + d.state })
+            });
+        function search() {
+                var input, filter, ul, li, a, i;
+                input = document.getElementById("search-input");
+                filter = input.value.toUpperCase();
+                ul = document.getElementById("dropdownMenu");
+                li = ul.getElementsByTagName("li");
+                for (i = 0; i < li.length; i++) {
+                    a = li[i].getElementsByTagName("a")[0];
+                    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        li[i].style.display = "";
+                    } else {
+                        li[i].style.display = "none";
+                    }
+                }
+            }
+        $("#viz").click(function() {
+            $("#home").removeClass("active");
+            $("#viz").addClass("active");
+            $("#home_content").css('display','none');
+            $("#viz_content").css('display', 'block');
+        });
+        $("#home").click(function () {
+            $("#viz").removeClass("active");
+            $("#home").addClass("active");
+            $("#viz_content").css('display', 'none');;
+            $("#home_content").css('display', 'block');
+        });
+        $(document).ready(function () {
+            // Gets the video src from the data-src
+            var $videoSrc;
+            $('#videolink').click(function () {
+                $videoSrc = $(this).data("src");
+            });
+            // when the modal is opened autoplay it  
+            $('#myModal').on('shown.bs.modal', function (e) {
+                console.log($videoSrc)
+                // set the video src to autoplay and not to show related video
+                $("#video").attr('src', $videoSrc + "?rel=0&amp;showinfo=0&amp;modestbranding=1&amp;autoplay=1");
+            })
+            // stop playing the youtube video when modal is closed
+            $('#myModal').on('hide.bs.modal', function (e) {
+                $("#video").attr('src', $videoSrc);
+            })
+        });
+    </script>
+</body>
+</html>
