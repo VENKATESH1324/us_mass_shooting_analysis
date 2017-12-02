@@ -157,13 +157,15 @@
                                 aria-expanded="false">
                                 Add More States to Sankey
                             </a>
-                            <ul id="dropdownMenu" class="dropdown-menu" style="height:200px; overflow:auto;">
+                            <ul id="dropdownMenu" class="dropdown-menu" style="height:200px; overflow:auto; width:21%;">
+                                <input type="search" class="form-control ds-input" onkeyup="search()" id="search-input" placeholder="Search..." autocomplete="off" spellcheck="false"
+                                    role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> 
+        </div><br><br>
         <div id="parallel"></div>
     </div>
     <!-- Local js files for visualization -->
@@ -191,6 +193,22 @@
                     .attr("type", "checkbox")
                 var text = element.append("text").text((d) => { return " " + d.state })
             });
+        function search() {
+                var input, filter, ul, li, a, i;
+                input = document.getElementById("search-input");
+                filter = input.value.toUpperCase();
+                ul = document.getElementById("dropdownMenu");
+                li = ul.getElementsByTagName("li");
+                for (i = 0; i < li.length; i++) {
+                    a = li[i].getElementsByTagName("a")[0];
+                    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        li[i].style.display = "";
+                    } else {
+                        li[i].style.display = "none";
+
+                    }
+                }
+            }
         $("#viz").click(function() {
             $("#home").removeClass("active");
             $("#viz").addClass("active");
