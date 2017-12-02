@@ -2,7 +2,7 @@ class Map {
     constructor() {
         this.margin = { top: 30, right: 30, bottom: 30, left: 30 };
         this.margin = { top: 30, right: 10, bottom: 10, left: 10 },
-        this.width = 960 - this.margin.left - this.margin.right,
+        this.width = 960 - this.margin.left - this.margin.right-230,
         this.height = 500 - this.margin.top - this.margin.bottom;
         this.color = d3.scale.linear().range(["#edf8fb", "#b2e2e2", "#66c2a4", "#2ca25f", "#006d2c"]).domain([0, 40]);
     }
