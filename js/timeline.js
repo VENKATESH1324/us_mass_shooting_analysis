@@ -1,18 +1,13 @@
 class TimeLine {
-    constructor () {}
+    constructor () {
+        var selectionForMapColor;
+    }
     drawChart() {
+        var self = this;
         var svg = d3.select("#timeline"),
             margin = { top: 20, right: 0, bottom: 30, left: 70 },
             width = +svg.attr("width") - margin.left - margin.right,
             height = +svg.attr("height") - margin.top - margin.bottom;
-           // g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-        //var parseTime = d3.timeParse("%x");
-
-        // var x = d3.scaleLinear()
-        //     .rangeRound([0, width]);
- var x = d3.time.scale()
-        .range([0, width]);
 
         var y = d3.scale.linear()
             .range([height, 0]);
@@ -23,10 +18,10 @@ class TimeLine {
         .scale(x)
         .orient("bottom");
 
+
         var yAxis = d3.svg.axis()
         .scale(y)
         .orient("right");
-
 
         var line = d3.svg.line()
             .x(function (d) { return x(d.year); })
@@ -45,24 +40,16 @@ class TimeLine {
         }, function (error, data) {
             if (error) throw error;
 
-            // x.domain(d3.extent(data, function(d) { return parseInt(d.year); }));
-            // d3.select("#xAxis").attr("transform",
-            //     "translate(" + margin.left + "," + margin.top + ")");
-
-           
-
+            //x.domain(d3.extent(data, function(d) { return d.year; }));
             x.domain(data.map(function (d) { return d.year; }));
 
             y.domain(d3.extent(data, function (d) { return d.deaths; }));
 
-            // let xAxis = g.append("g")
-            //     .attr("transform", "translate(0," + height + ")").attr("id", "brush_g")
-            //     .call(d3.svg.axis().scale(x).orient("bottom"));
             svg.append("g")
           .attr("class", "x axis")
           .attr("transform", "translate(-16," + height + ")")   //here used 18 to calibrate line chart wit x-axis ticks
-          .call(xAxis);
-              
+          .call(xAxis).selectAll('text').attr("transform", "rotate(-90)").attr("x",-20).attr("y",-5);
+
 
         svg.append("g")
           .attr("class", "y axis").attr("y",-50)
@@ -74,7 +61,7 @@ class TimeLine {
           .style("text-anchor", "end")
           .text("Death Rate").attr("x",-20).attr("y",50);
 
-      svg.append("path")
+     var symbol = svg.append("path")
         .datum(data)
         .attr("class", "line")
         .attr("d", line)
@@ -82,33 +69,67 @@ class TimeLine {
 
         });
 
-        //var brush = d3.svg.brush().x(x).extent([[10, 475], [width, 495]]).on("brush", brushed);
-        //d3.select("#timeline").append("g").attr("class", "brush").call(brush);
+        svg.append("g")
+            .attr("class", "brush")
+            .call(d3.svg.brush().x(x)
+                //.on("brushstart", brushstart)
+                .on("brush", brushmove))
+                //.on("brushend", brushend))
+            .selectAll("rect")
+            .attr("height", height);
+
+       var brush =   d3.svg.brush().x(x).on("brush",brushmove);
 
 
-        function brushed() {
-            //let selectedStates = [];
-            //let selectedData = d3.event.selection;
+        function brushmove() {
+            var s = d3.event.target.extent();
+            console.log(s);
+             var selected =  x.domain()
+                .filter(function(d){return (s[0] <= x(d)) && (x(d) <= s[1])});
 
-            //var yearBrush = line.data();
-            //console.log(line.data());
-            // console.log(selectedData);
-            // yearBrush.forEach(function(d,i){
 
-            //     console.log(d);
-            //     let comp = xScale(i);
-            //     if(comp>selectedData[0] && comp<selectedData[1]){
-            //         selectedStates.push(d.YEAR);
-            //     }
+            console.log(selected);
+            var brushedData = {};
 
-            // })
-            console.log("selectedData");
+            d3.csv("data/cumulative_shooting_state.csv", function(error, data) {
+                if (error) throw error;
 
-            //self.shiftChart.update(selectedStates);
+                var ref_dict = {};
+                data.forEach(function(d) {
+                    //console.log(d);
+                    if(!(ref_dict.hasOwnProperty(d.year))) {
+                        var temp_dict = {};
+                        temp_dict[d.State] = d.sum;
+                        ref_dict[d.year] = temp_dict;
+                    }
+                    else {
+                        ref_dict[d.year][d.State] = d.sum;
+                    }
+                })
+                function sumObjectsByKey() {
+                    return Array.from(arguments).reduce((a, b) => {
+                        for (let k in b) {
+                        if (b.hasOwnProperty(k))
+                            a[k] = parseInt(a[k] || 0) + parseInt(b[k]);
+                    }
+                    return a;
+                }, {});
+                }
 
+                var selectedArray = [];
+                selected.forEach(function(d){
+                    selectedArray.push(ref_dict[d]);
+                });
+                console.log("my array ",selectedArray)
+                
+                self.selectionForMapColor = sumObjectsByKey.apply(window, selectedArray);
+                self.passsDataToMap(self.selectionForMapColor);
+            });
         }
-        let map = new Map();
-        map.drawChart();
-
+    }
+     passsDataToMap(){
+        console.log("data here",this.selectionForMapColor);
+        var map = new Map();
+        map.drawChart(this.selectionForMapColor);
     }
 }
