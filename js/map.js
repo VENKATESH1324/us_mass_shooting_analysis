@@ -4,7 +4,7 @@ class Map {
         this.margin = { top: 30, right: 10, bottom: 10, left: 10 },
         this.width = 960 - this.margin.left - this.margin.right,
         this.height = 500 - this.margin.top - this.margin.bottom;
-        this.color = d3.scale.linear().range(["#edf8fb", "#b2e2e2", "#66c2a4", "#2ca25f", "#006d2c"]).domain([0, 40]);
+        this.color = d3.scale.linear().range(["#fc9272", "#de2d26","#860308","#860308"]);
     }
 
     drawChart() {
@@ -81,6 +81,11 @@ class Map {
     }
 
     fillStates(statesCount) {
+        let domain = [];
+        for(var key in statesCount) {
+            domain.push(statesCount[key]);
+        }
+        this.color.domain(d3.extent(domain));
         Object.keys(statesCount).forEach(key => {
             let id = "#" + key.replace(/\s+/, "");
             d3.select(id).style("fill",() => {return this.color(statesCount[key])});
