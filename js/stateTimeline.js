@@ -9,10 +9,10 @@ class StateTimeline {
 
     update(stateSelected){
         d3.select("#state-timeline").remove();
-        var margin = {top: 20, right: 20, bottom: 30, left: 50},
-            width = 960 - margin.left - margin.right,
-            height = 500 - margin.top - margin.bottom;
-        var x = d3.scale.ordinal().rangeRoundBands([0, width])
+        var margin = {top: 50, right: 20, bottom: 30, left: 150},
+            width = 500 - margin.left - margin.right,
+            height = 400 - margin.top - margin.bottom;
+        var x = d3.scale.ordinal().rangePoints([0, width])
         //var x = d3.time.scale().range([0, width]);
         var y = d3.scale.linear().range([height, 0]);
 
