@@ -1,7 +1,7 @@
 class ParallelChart {
     constructor() {
-        this.margin = { top: 30, right: 10, bottom: 10, left: 10 },
-        this.width = 960 - this.margin.left - this.margin.right,
+        this.margin = { top: 30, right: 0, bottom: 10, left: 0 },
+        this.width = 800 - this.margin.left - this.margin.right,
         this.height = 500 - this.margin.top - this.margin.bottom;
     }
     //REF: https://bl.ocks.org/mbostock/1341021
@@ -14,7 +14,7 @@ class ParallelChart {
             background,
             foreground;
 
-        var svg = d3.select("#viz_content").append("svg")
+        var svg = d3.select("#parallelChart").append("svg")
             .attr("width", this.width + this.margin.left + this.margin.right)
             .attr("height", this.height + this.margin.top + this.margin.bottom)
             .append("g")
@@ -79,14 +79,31 @@ class ParallelChart {
             function brush() {
                 var actives = dimensions.filter(function (p) { return !y[p].brush.empty(); }),
                     extents = actives.map(function (p) { return y[p].brush.extent(); });
+                var states = [];
                 foreground.style("display", function (d) {
+                    displayTable(states);
+                    if (actives.every(function (p, i) {return extents[i][0] <= d[p] && d[p] <= extents[i][1];})){
+                        states.push(d);   
+                    }
                     return actives.every(function (p, i) {
                         return extents[i][0] <= d[p] && d[p] <= extents[i][1];
                     }) ? null : "none";
                 });
+                console.log(states);
             }
-            let sankeyChart = new SankeyChart();
-            sankeyChart.drawChart();            
+
+            function displayTable(states) {
+                d3.select("#tableRow").selectAll("*").remove();
+                var body = d3.select("#tableRow").selectAll("tr")
+                             .data(states)
+                             .enter();
+                var tr = body.append("tr")
+                tr.append("td").classed("text-center", true).append("text").text((d)=>{ return d.state})
+                tr.append("td").classed("text-center", true).append("text").text((d) => { return d.lawtotal})
+                tr.append("td").classed("text-center",true).append("text").text((d) => { return d.shootings})
+                tr.append("td").classed("text-center", true).append("text").text((d) => { return d.deaths})
+            }
+                        
         });
     }
 }
