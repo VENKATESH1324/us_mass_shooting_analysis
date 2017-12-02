@@ -4,15 +4,11 @@ class Map {
         this.margin = { top: 30, right: 10, bottom: 10, left: 10 },
         this.width = 960 - this.margin.left - this.margin.right,
         this.height = 500 - this.margin.top - this.margin.bottom;
-        this.color = d3.scale.linear().range(["#fc9272", "#de2d26","#860308","#860308"]);
+        this.color = d3.scale.linear().range(["#fcbba1","#860308","#860308"]).domain([0,165]);
     }
 
     drawChart() {
         // append tooltip div to body
-        var domainList = [];
-        /* for (var key in selectionForMapColor) {
-            domainList.push(selectionForMapColor[key]);
-        } */
         var div = d3.select("#mapLine").append("div")
             .attr("class", "tooltip")
             .style("opacity", 0);
@@ -32,16 +28,12 @@ class Map {
         var path = d3.geo.path()
             .projection(projection);
 
-        //var color = d3.scale.linear().range(["#edf8fb","#b2e2e2","#66c2a4","#2ca25f","#006d2c"]).domain([0,40]);
+        this.createLegend();
+        
         d3.json("data/us-map.json", (error, json) => {
             if (error) throw error;
             d3.csv("data/cumulative_data.csv", (stateData) => {
                 if (error) throw error;
-                /* color.domain([
-                    d3.min(domainList),
-                    d3.max(domainList)
-                ]); */
-
                 var dataLookup = {};
                 stateData.forEach(function (stateRow) {
                     // d3.csv will read the values as strings; we need to convert them to floats
@@ -81,14 +73,26 @@ class Map {
     }
 
     fillStates(statesCount) {
-        let domain = [];
-        for(var key in statesCount) {
-            domain.push(statesCount[key]);
-        }
-        this.color.domain(d3.extent(domain));
         Object.keys(statesCount).forEach(key => {
             let id = "#" + key.replace(/\s+/, "");
             d3.select(id).style("fill",() => {return this.color(statesCount[key])});
         });
+    }
+
+    createLegend() {
+        var legend_data = [ { key: 20, value: "#fcbba1"},
+                            { key: 40, value: "#fc9272" },
+                            { key: 60, value: "#fb6a4a" },
+                            { key: 80, value: "#de2d26" },
+                            { key: 100, value: "#a50f15" },
+                            { key: 160, value: "#860308" }]
+        var legend = d3.select("#legend").selectAll("rect")
+                       .data(legend_data)
+                       .append("rect")
+                       .attr("x",40)
+                       .attr("y",80)
+                       .attr("width",20)
+                       .attr("height",10)
+                       .style("fill",(d) => {return d.value})
     }
 }
