@@ -19,7 +19,6 @@ class SankeyChart {
                 setTimeout(function () { $inp.prop('checked', true) }, 0);
             }
             $(event.target).blur();
-            console.log(states);
             return false;
         });
         
@@ -69,7 +68,6 @@ class SankeyChart {
                     new_data.push(d);
                 }    
             });
-            console.log(new_data);
             //set up graph in same style as original example but empty
             var graph = { "nodes": [], "links": [] };
 

@@ -89,7 +89,6 @@ class ParallelChart {
                         return extents[i][0] <= d[p] && d[p] <= extents[i][1];
                     }) ? null : "none";
                 });
-                console.log(states);
             }
 
             function displayTable(states) {

@@ -35,17 +35,14 @@ class TimeLine {
         d3.csv("data/summary_data.csv", function (d) {
             d.year = +parseInt(d.year);
             d.deaths = +d.deaths;
-            //console.log(d.date+" deaths => "+d.deaths);
             return d;
         }, function (error, data) {
             if (error) throw error;
 
-            //x.domain(d3.extent(data, function(d) { return d.year; }));
             x.domain(data.map(function (d) { return d.year; }));
-
             y.domain(d3.extent(data, function (d) { return d.deaths; }));
 
-            svg.append("g")
+        svg.append("g")
           .attr("class", "x axis")
           .attr("transform", "translate(-16," + height + ")")   //here used 18 to calibrate line chart wit x-axis ticks
           .call(xAxis).selectAll('text').attr("transform", "rotate(-90)").attr("x",-20).attr("y",-5);
@@ -83,12 +80,8 @@ class TimeLine {
 
         function brushmove() {
             var s = d3.event.target.extent();
-            console.log(s);
-             var selected =  x.domain()
+            var selected =  x.domain()
                 .filter(function(d){return (s[0] <= x(d)) && (x(d) <= s[1])});
-
-
-            console.log(selected);
             var brushedData = {};
 
             d3.csv("data/cumulative_shooting_state.csv", function(error, data) {
@@ -96,7 +89,6 @@ class TimeLine {
 
                 var ref_dict = {};
                 data.forEach(function(d) {
-                    //console.log(d);
                     if(!(ref_dict.hasOwnProperty(d.year))) {
                         var temp_dict = {};
                         temp_dict[d.State] = d.sum;
@@ -128,8 +120,7 @@ class TimeLine {
         }
     }
      passsDataToMap(){
-        console.log("data here",this.selectionForMapColor);
         var map = new Map();
-        map.drawChart(this.selectionForMapColor);
+        map.fillStates(this.selectionForMapColor);
     }
 }
