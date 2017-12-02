@@ -1,9 +1,36 @@
 class SankeyChart {
     constructor() {
        }
-    drawChart() {
+    initializaStates () {
+        var states = ["Arizona"];
+        var self = this;
+        $('.dropdown-menu a').on('click', function (event) {
+            var $target = $(event.currentTarget),
+                val = $target.attr('data-value'),
+                $inp = $target.find('input'),
+                idx;
+            if ((idx = states.indexOf(val)) > -1) {
+                states.splice(idx, 1);
+                self.drawChart(states);
+                setTimeout(function () { $inp.prop('checked', false) }, 0);
+            } else {
+                states.push(val);
+                self.drawChart(states);
+                setTimeout(function () { $inp.prop('checked', true) }, 0);
+            }
+
+            $(event.target).blur();
+            
+            console.log(states);
+            return false;
+        });
+        this.drawChart(states);
+        let parallelChart = new ParallelChart();
+        parallelChart.drawChart();
+    }
+    drawChart(states) {
         var units = "Widgets";
-        var states = ["Texas","Utah"];
+        //var states = ["Texas","Utah"];
         var margin = { top: 10, right: 10, bottom: 10, left: 10 },
             width = 700 - margin.left - margin.right,
             height = 500 - margin.top - margin.bottom;
@@ -12,8 +39,12 @@ class SankeyChart {
             format = function (d) { return formatNumber(d); },
             color = d3.scale.category20();
 
+        if($("#sankey_diagram").length) {
+            d3.select("#sankey_diagram").remove();
+        }
         // append the svg canvas to the page
         var svg = d3.select("#sankey").append("svg")
+            .attr("id","sankey_diagram")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
@@ -142,8 +173,6 @@ class SankeyChart {
                 sankey.relayout();
                 link.attr("d", path);
             }
-            let parallelChart = new ParallelChart();
-            parallelChart.drawChart();
         });
     }
 }

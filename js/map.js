@@ -48,7 +48,7 @@ class Map {
                     div.style("opacity", 0);
                 });
             let sankeyChart = new SankeyChart();
-            sankeyChart.drawChart();
+            sankeyChart.initializaStates();
         });
     }
 }
