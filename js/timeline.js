@@ -84,9 +84,7 @@ class TimeLine {
         function brushmove() {
             var s = d3.event.target.extent();
             console.log(s);
-            //console.log(x(s[0]));
-            //symbol.classed("selected", function(d) { return s[0] <= (d = x(d)) && d <= s[1]; });
-            var selected =  x.domain()
+             var selected =  x.domain()
                 .filter(function(d){return (s[0] <= x(d)) && (x(d) <= s[1])});
 
 
@@ -108,9 +106,6 @@ class TimeLine {
                         ref_dict[d.year][d.State] = d.sum;
                     }
                 })
-                console.log(ref_dict);
-
-
                 function sumObjectsByKey() {
                     return Array.from(arguments).reduce((a, b) => {
                         for (let k in b) {
@@ -121,26 +116,20 @@ class TimeLine {
                 }, {});
                 }
 
-                    var selectedArray = []
+                var selectedArray = [];
                 selected.forEach(function(d){
                     selectedArray.push(ref_dict[d]);
                 });
                 console.log("my array ",selectedArray)
-                //console.log(sumObjectsByKey.apply(window, selectedArray));
-
+                
                 self.selectionForMapColor = sumObjectsByKey.apply(window, selectedArray);
-
+                self.passsDataToMap(self.selectionForMapColor);
             });
-
-            self.passsDataToMap(this.selectionForMapColor);
-
         }
-
     }
-
      passsDataToMap(){
         console.log("data here",this.selectionForMapColor);
         var map = new Map();
-        map.drawChart(self.selectionForMapColor);
+        map.drawChart(this.selectionForMapColor);
     }
 }
