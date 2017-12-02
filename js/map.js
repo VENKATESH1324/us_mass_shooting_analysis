@@ -9,7 +9,7 @@ class Map {
 
     drawChart() {
         // append tooltip div to body
-        var div = d3.select("body").append("div")
+        var div = d3.select("#map").append("div")
             .attr("class", "tooltip")
             .style("opacity", 0);
         
