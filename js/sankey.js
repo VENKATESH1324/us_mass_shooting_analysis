@@ -142,6 +142,8 @@ class SankeyChart {
                 sankey.relayout();
                 link.attr("d", path);
             }
+            let parallelChart = new ParallelChart();
+            parallelChart.drawChart();
         });
     }
 }

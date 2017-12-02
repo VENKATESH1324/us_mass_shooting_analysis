@@ -47,8 +47,8 @@ class Map {
                 .on("mouseout", () => {
                     div.style("opacity", 0);
                 });
-            let parallelChart = new ParallelChart();
-            parallelChart.drawChart();
+            let sankeyChart = new SankeyChart();
+            sankeyChart.drawChart();
         });
     }
 }

@@ -147,7 +147,34 @@
         </svg>
         <div id="map"></div>
         <div id="sankey">
-            
+        <br/>
+            <br/>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="button-group">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Add More States to Sankey
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" data-value="Texas" tabIndex="-1">
+                                        <input type="checkbox" />&nbsp;Texas</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-item" data-value="Utah" tabIndex="-1">
+                                        <input type="checkbox" />&nbsp;Utah</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-item" data-value="California" tabIndex="-1">
+                                        <input type="checkbox" />&nbsp;California</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div> 
         <div id="parallel"></div>
     </div>
@@ -161,6 +188,29 @@
     </div>
 
     <script>
+        var options = [];
+
+            $('.dropdown-menu a').on('click', function (event) {
+
+                var $target = $(event.currentTarget),
+                    val = $target.attr('data-value'),
+                    $inp = $target.find('input'),
+                    idx;
+
+                if ((idx = options.indexOf(val)) > -1) {
+                    options.splice(idx, 1);
+                    setTimeout(function () { $inp.prop('checked', false) }, 0);
+                } else {
+                    options.push(val);
+                    setTimeout(function () { $inp.prop('checked', true) }, 0);
+                }
+
+                $(event.target).blur();
+
+                console.log(options);
+                return false;
+            });
+
         $("#viz").click(function() {
             $("#home").removeClass("active");
             $("#viz").addClass("active");
