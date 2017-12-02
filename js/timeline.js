@@ -1,6 +1,9 @@
 class TimeLine {
-    constructor () {}
+    constructor () {
+        var selectionForMapColor;
+    }
     drawChart() {
+        var self = this;
         var svg = d3.select("#timeline"),
             margin = { top: 20, right: 0, bottom: 30, left: 70 },
             width = +svg.attr("width") - margin.left - margin.right,
@@ -42,10 +45,6 @@ class TimeLine {
 
             y.domain(d3.extent(data, function (d) { return d.deaths; }));
 
-            // let xAxis = g.append("g")
-            //     .attr("transform", "translate(0," + height + ")").attr("id", "brush_g")
-            //     .call(d3.svg.axis().scale(x).orient("bottom"));
-
             svg.append("g")
           .attr("class", "x axis")
           .attr("transform", "translate(-16," + height + ")")   //here used 18 to calibrate line chart wit x-axis ticks
@@ -70,12 +69,6 @@ class TimeLine {
 
         });
 
-        // var symbol = svg.append("g").selectAll("path")
-        //     .data(data)
-        //     .enter().append("path")
-        //     .attr("transform", function(d) { return "translate(" + x(d) + "," + (height / 2) + ")"; })
-        //     .attr("d", d3.svg.symbol().type(String).size(200));
-
         svg.append("g")
             .attr("class", "brush")
             .call(d3.svg.brush().x(x)
@@ -87,18 +80,6 @@ class TimeLine {
 
        var brush =   d3.svg.brush().x(x).on("brush",brushmove);
 
-        // function brushed(){
-        //                         var selected =  x.domain()
-        //                         .filter(function(d){return (brush.extent()[0] <= x(d)) && (x(d) <= brush.extent()[1])});
-        //                         d3.select(".selected").text(selected.concat(","));
-        //                         console.log(selected);
-        //                 }
-
-        // function brushstart() {
-        //     svg.classed("selecting", true);
-        // }
-
-
 
         function brushmove() {
             var s = d3.event.target.extent();
@@ -108,17 +89,58 @@ class TimeLine {
             var selected =  x.domain()
                 .filter(function(d){return (s[0] <= x(d)) && (x(d) <= s[1])});
 
-            //d3.select(".selected").text(selected.concat(","));
-            var rangeExtent = [x( s[0] ), x( s[1] ) ];
 
             console.log(selected);
+            var brushedData = {};
+
+            d3.csv("data/cumulative_shooting_state.csv", function(error, data) {
+                if (error) throw error;
+
+                var ref_dict = {};
+                data.forEach(function(d) {
+                    //console.log(d);
+                    if(!(ref_dict.hasOwnProperty(d.year))) {
+                        var temp_dict = {};
+                        temp_dict[d.State] = d.sum;
+                        ref_dict[d.year] = temp_dict;
+                    }
+                    else {
+                        ref_dict[d.year][d.State] = d.sum;
+                    }
+                })
+                console.log(ref_dict);
+
+
+                function sumObjectsByKey() {
+                    return Array.from(arguments).reduce((a, b) => {
+                        for (let k in b) {
+                        if (b.hasOwnProperty(k))
+                            a[k] = parseInt(a[k] || 0) + parseInt(b[k]);
+                    }
+                    return a;
+                }, {});
+                }
+
+                    var selectedArray = []
+                selected.forEach(function(d){
+                    selectedArray.push(ref_dict[d]);
+                });
+                console.log("my array ",selectedArray)
+                //console.log(sumObjectsByKey.apply(window, selectedArray));
+
+                self.selectionForMapColor = sumObjectsByKey.apply(window, selectedArray);
+
+            });
+
+            self.passsDataToMap(this.selectionForMapColor);
 
         }
 
-        // function brushend() {
-        //     svg.classed("selecting", !d3.event.target.empty());
-        // }
+    }
 
-
+     passsDataToMap(){
+        console.log("data here",this.selectionForMapColor);
+        var map = new Map();
+        map.drawChart(self.selectionForMapColor);
     }
 }

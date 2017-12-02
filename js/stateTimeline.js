@@ -21,8 +21,7 @@ class StateTimeline {
             .y(function(d) { return y(d.sum); });
 
 
-
-        var svg = d3.select("body").append("svg").attr("id","state-timeline")
+        var svg = d3.select("#stateline").append("svg").attr("id","state-timeline")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")

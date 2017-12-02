@@ -53,12 +53,25 @@ class Map {
     //     });
     // }
 
-        drawChart(){
-                var div = d3.select("body").append("div").attr("id","idmap")
+        drawChart(selectionForMapColor){
+        d3.select("#us-map").remove();
+            var domainList =[];
+
+            for (var key in selectionForMapColor) {
+
+                domainList.push(selectionForMapColor[key] );
+
+            }
+            console.log("here");
+            console.log(selectionForMapColor);
+            console.log("domainlist",domainList);
+
+                var div = d3.select("body").append("div")
                     .attr("class", "tooltip")
                     .style("opacity", 0);
 
-                var svg = d3.select("body").append("svg")
+
+                var svg = d3.select("#us").append("svg")
                     .attr("id","us-map")
                     .attr("width", this.width + this.margin.left + this.margin.right)
                     .attr("height", this.height + this.margin.top + this.margin.bottom)
@@ -89,16 +102,17 @@ class Map {
                 d3.csv("data/cumulative_data.csv", function (stateData) {
                     // Set input domain for color scale based on the lowest and highest values in the data
                     color.domain([
-                        d3.min(stateData, function (d) {
-                            return d.deaths;
-                        }),
-                        d3.max(stateData, function (d) {
-                            return d.deaths;
-                        })
+                        d3.min(domainList),
+                        d3.max(domainList)
                     ]);
 
                     // Convert the data array to an object, so that it's easy to look up
                     // data values by state names
+
+                    // Object.keys(selectionForMapColor).forEach(function(key) {
+                    //     console.log(key, selectionForMapColor[key]);
+                    // });
+
                     var dataLookup = {};
                     stateData.forEach(function (stateRow) {
                         // d3.csv will read the values as strings; we need to convert them to floats
