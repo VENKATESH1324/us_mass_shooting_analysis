@@ -157,19 +157,7 @@
                                 aria-expanded="false">
                                 Add More States to Sankey
                             </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" data-value="Texas" tabIndex="-1">
-                                        <input type="checkbox" />&nbsp;Texas</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="dropdown-item" data-value="Utah" tabIndex="-1">
-                                        <input type="checkbox" />&nbsp;Utah</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="dropdown-item" data-value="California" tabIndex="-1">
-                                        <input type="checkbox" />&nbsp;California</a>
-                                </li>
+                            <ul id="dropdownMenu" class="dropdown-menu" style="height:200px; overflow:auto;">
                             </ul>
                         </div>
                     </div>
@@ -188,8 +176,21 @@
     </div>
 
     <script>
-        
-
+        d3.csv("data/cumulative_data.csv", function (error, data) {
+                if (error) throw error;
+                var ul = d3.select("#dropdownMenu")
+                    .selectAll("li")
+                    .data(data)
+                    .enter();
+                var li = ul.append("li");
+                var element = li.append("a")
+                    .classed("dropdown-item", true)
+                    .attr("data-value", (d) => { return d.state })
+                    .attr("tabIndex", "-1")
+                var input = element.append("input")
+                    .attr("type", "checkbox")
+                var text = element.append("text").text((d) => { return " " + d.state })
+            });
         $("#viz").click(function() {
             $("#home").removeClass("active");
             $("#viz").addClass("active");
@@ -221,5 +222,4 @@
         });
     </script>
 </body>
-
 </html>

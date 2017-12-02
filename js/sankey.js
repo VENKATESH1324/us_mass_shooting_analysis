@@ -18,12 +18,11 @@ class SankeyChart {
                 self.drawChart(states);
                 setTimeout(function () { $inp.prop('checked', true) }, 0);
             }
-
             $(event.target).blur();
-            
             console.log(states);
             return false;
         });
+        
         this.drawChart(states);
         let parallelChart = new ParallelChart();
         parallelChart.drawChart();
