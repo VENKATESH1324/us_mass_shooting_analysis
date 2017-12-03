@@ -64,11 +64,11 @@ class Map {
                         var fileSelected = "data/" + stateName + ".csv";
                         var statechart = new StateTimeline();
                         statechart.update(fileSelected);
+                        let sankeyChart = new SankeyChart();
+                        sankeyChart.initializaStates(d.properties.name);
                     });
                    this.fillStates(dataLookup);
             });
-            let sankeyChart = new SankeyChart();
-            sankeyChart.initializaStates();
         });
     }
 

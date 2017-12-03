@@ -42,7 +42,7 @@ class StateTimeline {
 
             // Add the valueline path.
             svg.append("path")
-                .data([data])
+                .data([data]).transition().duration(2000)
                 .attr("class", "line")
                 .attr("d", valueline).style({"stroke":"steelblue", "stroke-width":"1.5px", "fill":"none"});;
             // Add the X Axis
@@ -52,7 +52,7 @@ class StateTimeline {
                 .call(d3.svg.axis().scale(x).orient("bottom"));
 
             // Add the Y Axis
-            svg.append("g")
+            svg.append("g").transition().duration(3000)
                 .attr("class", "y axis")
                 .call(d3.svg.axis().scale(y).orient("left"));
         });

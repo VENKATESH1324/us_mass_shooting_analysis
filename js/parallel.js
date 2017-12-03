@@ -101,8 +101,7 @@ class ParallelChart {
                 tr.append("td").classed("text-center", true).append("text").text((d) => { return d.lawtotal})
                 tr.append("td").classed("text-center",true).append("text").text((d) => { return d.shootings})
                 tr.append("td").classed("text-center", true).append("text").text((d) => { return d.deaths})
-            }
-                        
+            }              
         });
     }
 }

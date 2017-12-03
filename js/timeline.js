@@ -42,7 +42,7 @@ class TimeLine {
             x.domain(data.map(function (d) { return d.year; }));
             y.domain(d3.extent(data, function (d) { return d.deaths; }));
 
-        svg.append("g")
+        svg.append("g").transition().duration(5000)
           .attr("class", "x axis")
           .attr("transform", "translate(-16," + height + ")")   //here used 18 to calibrate line chart wit x-axis ticks
           .call(xAxis).selectAll('text').attr("transform", "rotate(-90)").attr("x",-20).attr("y",-5);
@@ -59,7 +59,7 @@ class TimeLine {
           .text("Death Rate").attr("x",-20).attr("y",50);
 
      var symbol = svg.append("path")
-        .datum(data)
+         .datum(data)
         .attr("class", "line")
         .attr("d", line)
         .style({"stroke":"steelblue", "stroke-width":"1.5px", "fill":"none"});

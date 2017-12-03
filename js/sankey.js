@@ -1,8 +1,10 @@
 class SankeyChart {
     constructor() {
        }
-    initializaStates () {
-        var states = ["Arizona"];
+    initializaStates (state) {
+        var states = [];
+        if(state)
+            states.push(state);
         var self = this;
         $('.dropdown-menu a').on('click', function (event) {
             var $target = $(event.currentTarget),
@@ -23,8 +25,6 @@ class SankeyChart {
         });
         
         this.drawChart(states);
-        let parallelChart = new ParallelChart();
-        parallelChart.drawChart();
     }
     drawChart(states) {
         var units = "Widgets";
