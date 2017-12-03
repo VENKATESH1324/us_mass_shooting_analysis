@@ -56,7 +56,7 @@ class TimeLine {
           .attr("y", 6)
           .attr("dy", ".71em")
           .style("text-anchor", "end")
-          .text("Death Rate").attr("x",-20).attr("y",50);
+          .text("Death Count").attr("x",-20).attr("y",50);
 
      var symbol = svg.append("path")
          .datum(data)
@@ -69,9 +69,7 @@ class TimeLine {
         svg.append("g")
             .attr("class", "brush")
             .call(d3.svg.brush().x(x)
-                //.on("brushstart", brushstart)
                 .on("brush", brushmove))
-                //.on("brushend", brushend))
             .selectAll("rect")
             .attr("height", height);
 
@@ -112,8 +110,6 @@ class TimeLine {
                 selected.forEach(function(d){
                     selectedArray.push(ref_dict[d]);
                 });
-                console.log("my array ",selectedArray)
-                
                 self.selectionForMapColor = sumObjectsByKey.apply(window, selectedArray);
                 self.passsDataToMap(self.selectionForMapColor);
             });

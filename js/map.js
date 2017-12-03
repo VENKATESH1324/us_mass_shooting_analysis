@@ -86,13 +86,23 @@ class Map {
                             { key: 80, value: "#de2d26" },
                             { key: 100, value: "#a50f15" },
                             { key: 160, value: "#860308" }]
-        var legend = d3.select("#legend").selectAll("rect")
-                       .data(legend_data)
+
+        var legend = d3.select("#legend").append("svg").attr("width",this.width).attr("height",150).selectAll("rect")
+                       .data(legend_data).enter()
                        .append("rect")
-                       .attr("x",40)
-                       .attr("y",80)
-                       .attr("width",20)
-                       .attr("height",10)
-                       .style("fill",(d) => {return d.value})
+                       .attr("x",function(d,i){
+                          return i*100+100;
+                       })
+                       .attr("y",60)
+                       .attr("width",100)
+                       .attr("height",15)
+                       .style("fill",(d) => {return d.value});
+
+        d3.select("#legend").select("svg").selectAll("text").data(legend_data).enter().append("text")
+            .attr("x", function(d,i) { return i*100+100; })
+            .attr("y", 50)
+            .attr("dy", ".35em")
+            .text(function(d) { return d.key; }).style("fill","black");
+
     }
 }

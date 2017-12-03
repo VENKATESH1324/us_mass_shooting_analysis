@@ -11,7 +11,7 @@ class StateTimeline {
         d3.select("#state-timeline").remove();
         var margin = {top: 50, right: 20, bottom: 30, left: 150},
             width = 500 - margin.left - margin.right,
-            height = 400 - margin.top - margin.bottom;
+            height = 500 - margin.top - margin.bottom;
         var x = d3.scale.ordinal().rangePoints([0, width])
         //var x = d3.time.scale().range([0, width]);
         var y = d3.scale.linear().range([height, 0]);
@@ -23,7 +23,7 @@ class StateTimeline {
 
         var svg = d3.select("#stateline").append("svg").attr("id","state-timeline")
             .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
+            .attr("height", height + margin.top + margin.bottom+50)
             .append("g")
             .attr("transform",
                 "translate(" + margin.left + "," + margin.top + ")");
@@ -44,17 +44,24 @@ class StateTimeline {
             svg.append("path")
                 .data([data]).transition().duration(2000)
                 .attr("class", "line")
-                .attr("d", valueline).style({"stroke":"steelblue", "stroke-width":"1.5px", "fill":"none"});;
+                .attr("d", valueline).style({"stroke":"steelblue", "stroke-width":"1.5px", "fill":"none"});
             // Add the X Axis
             svg.append("g")
                 .attr("class", "x axis")
                 .attr("transform", "translate(0," + height + ")")
-                .call(d3.svg.axis().scale(x).orient("bottom"));
+                .call(d3.svg.axis().scale(x).orient("bottom")).selectAll('text').attr("transform", "rotate(-90)").attr("x",-16).attr("y",-5);
 
             // Add the Y Axis
             svg.append("g").transition().duration(3000)
                 .attr("class", "y axis")
                 .call(d3.svg.axis().scale(y).orient("left"));
+
+                svg.append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 6)
+                .attr("dy", ".71em")
+                .style("text-anchor", "end")
+                .text("Death Count").attr("x",20).attr("y",10);
         });
 
 
